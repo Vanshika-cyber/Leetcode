@@ -1,0 +1,19 @@
+class Solution {
+    public int xorAfterQueries(int[] nums, int[][] queries) {
+        long MOD = 1000000007L;
+        for (int[] q : queries) {
+            int l = q[0];
+            int r = q[1];
+            int k = q[2];
+            int v = q[3];
+            for (int idx = l; idx <= r; idx += k) {
+                nums[idx] = (int)((nums[idx] * 1L * v) % MOD);
+            }
+        }
+        int xor = 0;
+        for (int num : nums) {
+            xor ^= num;
+        }
+        return xor;
+    }
+}
